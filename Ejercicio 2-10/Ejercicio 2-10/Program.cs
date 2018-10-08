@@ -31,10 +31,11 @@ namespace Ejercicio_2_10
             int mes;
             Console.WriteLine("Introduzca un número de mes. ");
             mes = Int32.Parse(Console.ReadLine());
-            PedirMes(mes);
+            Console.WriteLine();
+            Console.WriteLine(PedirMes(mes));
             Console.ReadLine();
 
-            int anio;
+            
             Console.WriteLine("Dame un año. ");
             int num1 = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Dame otro. ");
@@ -45,18 +46,11 @@ namespace Ejercicio_2_10
         }
         public static int PedirMes(int mes)
         {
-           
-                if (mes > 0 && mes <= 12)
-                {
-                    Console.WriteLine("Ha introducido el mes número " + mes);
-
-                }
-                else
-                {
-                    Console.WriteLine("Introduzca un numero de mes correcto. ");
-                }
-          
-
+           while(mes<=0 || mes>12)
+            {
+                Console.WriteLine("No es un mes correcto. Por favor, introduzca un número de mes correcto. ");
+                mes = Int32.Parse(Console.ReadLine());
+            }
                 return mes;
         }
         public static int PedirAnio(int num1, int num2)
@@ -81,7 +75,9 @@ namespace Ejercicio_2_10
         }
         public static int PedirDia(int dia)
         {
-
+            
         }
+
+
     }
 }
