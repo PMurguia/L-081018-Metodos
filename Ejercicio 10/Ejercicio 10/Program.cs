@@ -8,7 +8,122 @@ namespace Ejercicio_10
 {
     class Program
     {
-        static void Main(string[] args)
+        public static int NormalCount()
+        {
+            int countLimit;
+            do
+            {
+                Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
+                countLimit = Convert.ToInt32(Console.ReadLine());
+            } while (countLimit <= 0);
+            Console.ReadLine();
+
+            for (int i = 1; i <= countLimit; i++)
+            {
+                Console.WriteLine(i);
+            }
+            return countLimit;
+        }
+        public static int NasaCount()
+        {
+            int countLimit;
+            do
+            {
+                Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
+                countLimit = Convert.ToInt32(Console.ReadLine());
+            } while (countLimit <= 0);
+            Console.WriteLine();
+
+            for (int i = countLimit; i >= 0; i--)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("¡¡¡Ignición!!!");
+            return countLimit;
+        }
+        public static int StudentCount()
+        {
+            int countLimit;
+            int cardValue;
+            do
+            {
+                Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
+                countLimit = Convert.ToInt32(Console.ReadLine());
+            } while (countLimit <= 0);
+            Console.WriteLine();
+
+            for (int i = 1; i <= countLimit; i++)
+            {
+                // Hacemos módulo 10 para usar el dígito de las unidades,
+                // por lo tanto sólo tendremos de 0 a 9 en cardValue.
+                // Si es un 1 escribimos Ás, un 8 Sota, un 9 Caballo y
+                // un 0 Rey. El resto de valores (de 2 a 7) mostramos
+                // el valor de cardValue.
+                cardValue = i % 10;
+                if (cardValue == 1)
+                {
+                    Console.WriteLine("Ás");
+                }
+                else if (cardValue == 8)
+                {
+                    Console.WriteLine("Sota");
+                }
+                else if (cardValue == 9)
+                {
+                    Console.WriteLine("Caballo");
+                }
+                else if (cardValue == 0)
+                {
+                    Console.WriteLine("Rey");
+                }
+                else
+                {
+                    Console.WriteLine(cardValue);
+                }
+            }
+            return countLimit;
+        }
+
+        public static int SesameCount()
+        {
+            int countLimit;
+            do
+            {
+                Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
+                countLimit = Convert.ToInt32(Console.ReadLine());
+            } while (countLimit <= 0);
+            Console.WriteLine();
+
+            for (int i = 1; i <= countLimit; i++)
+            {
+                Console.WriteLine("¡¡¡¡¡¡¡ " + i + " !!!!!!!");
+            }
+            return countLimit;
+        }
+        public static int MailManCount()
+        {
+          
+            int countLimit;
+            do
+            {
+                Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
+                countLimit = Convert.ToInt32(Console.ReadLine());
+            } while (countLimit <= 0);
+            Console.WriteLine();
+
+            for (int i = 1; i <= countLimit; i += 2)
+            {
+                Console.WriteLine(i);
+            }
+            for (int i = 2; i <= countLimit; i += 2)
+            {
+                Console.WriteLine(i);
+            }
+            return countLimit;
+        } 
+
+
+    static void Main(string[] args)
         {
             //Modifica el proyecto Contadores
             //(si no lo tienes en el ordenador puedes descargarlo de https://github.com/ikermurga/Contadores )
@@ -35,107 +150,27 @@ namespace Ejercicio_10
                     // Contar normalmente
                     case NORMAL_COUNT:
 
-                        do
-                        {
-                            Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
-                            countLimit = Convert.ToInt32(Console.ReadLine());
-                        } while (countLimit <= 0);
-                       
-
-                        for (int i = 1; i <= countLimit; i++)
-                        {
-                            Console.WriteLine(i);
-                        }
+                        NormalCount();
                         break;
 
                     // Contar como un ingeniero de la NASA.
                     case NASA_COUNT:
-                        do
-                        {
-                            Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
-                            countLimit = Convert.ToInt32(Console.ReadLine());
-                        } while (countLimit <= 0);
-                        Console.WriteLine();
-
-                        for (int i = countLimit; i >= 0; i--)
-                        {
-                            Console.WriteLine(i);
-                        }
-                        Console.WriteLine("¡¡¡Ignición!!!");
+                        NasaCount();
                         break;
 
                     // Contar como un estudiante universitario
                     case STUDENT_COUNT:
-                        do
-                        {
-                            Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
-                            countLimit = Convert.ToInt32(Console.ReadLine());
-                        } while (countLimit <= 0);
-                        Console.WriteLine();
-
-                        for (int i = 1; i <= countLimit; i++)
-                        {
-                            // Hacemos módulo 10 para usar el dígito de las unidades,
-                            // por lo tanto sólo tendremos de 0 a 9 en cardValue.
-                            // Si es un 1 escribimos Ás, un 8 Sota, un 9 Caballo y
-                            // un 0 Rey. El resto de valores (de 2 a 7) mostramos
-                            // el valor de cardValue.
-                            cardValue = i % 10;
-                            if (cardValue == 1)
-                            {
-                                Console.WriteLine("Ás");
-                            }
-                            else if (cardValue == 8)
-                            {
-                                Console.WriteLine("Sota");
-                            }
-                            else if (cardValue == 9)
-                            {
-                                Console.WriteLine("Caballo");
-                            }
-                            else if (cardValue == 0)
-                            {
-                                Console.WriteLine("Rey");
-                            }
-                            else
-                            {
-                                Console.WriteLine(cardValue);
-                            }
-                        }
+                        StudentCount();
                         break;
 
                     // Contar como en barrio sesamo
                     case SESAME_STREET_COUNT:
-                        do
-                        {
-                            Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
-                            countLimit = Convert.ToInt32(Console.ReadLine());
-                        } while (countLimit <= 0);
-                        Console.WriteLine();
-
-                        for (int i = 1; i <= countLimit; i++)
-                        {
-                            Console.WriteLine("¡¡¡¡¡¡¡ " + i + " !!!!!!!");
-                        }
+                        SesameCount();
                         break;
 
                     // Contar como un cartero
                     case MAILMAN_COUNT:
-                        do
-                        {
-                            Console.WriteLine("¿Hasta qué número quieres contar (número mayor que 1)?");
-                            countLimit = Convert.ToInt32(Console.ReadLine());
-                        } while (countLimit <= 0);
-                        Console.WriteLine();
-
-                        for (int i = 1; i <= countLimit; i += 2)
-                        {
-                            Console.WriteLine(i);
-                        }
-                        for (int i = 2; i <= countLimit; i += 2)
-                        {
-                            Console.WriteLine(i);
-                        }
+                        MailManCount();
                         break;
 
                     // 6 es opción de salir del programa así que no hacemos nada
