@@ -22,8 +22,35 @@ namespace Ejercicio_2_3
             Console.WriteLine("Ahora el tope (máximo).");
             int numMax = Int32.Parse(Console.ReadLine());
 
-            bool  
+            cantidad = Rnd(cantidad, numMin, numMax);
+      
 
+        }
+    }public static int Rnd (int cantidad, int numMin, int numMax)
+    {
+        int aux = 0;
+        Random random = new Random();
+        if (numMax < numMin)
+        {
+            aux = numMax;
+            numMax = numMin;
+            numMin = aux;
+            random.Next(numMin, numMax);
+
+            for (int i = 0; i < cantidad; i++)
+            {
+                random.Next(numMin, numMax);
+            }
+            return cantidad;
+        }
+        else
+        {
+            for (int i = 0; i < cantidad; i++)
+            {
+                random.Next(numMin, numMax);
+                
+            }
+            return cantidad;
         }
     }
 }
