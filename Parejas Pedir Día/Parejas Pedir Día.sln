@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parejas Pedir Día", "Parejas Pedir Día\Parejas Pedir Día.csproj", "{7B4D87A6-2D4C-4EA1-BDA7-3309A8C9A1C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B4D87A6-2D4C-4EA1-BDA7-3309A8C9A1C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4D87A6-2D4C-4EA1-BDA7-3309A8C9A1C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4D87A6-2D4C-4EA1-BDA7-3309A8C9A1C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4D87A6-2D4C-4EA1-BDA7-3309A8C9A1C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD7D1815-EEF2-4FA2-9433-3ED153D46BBC}
+	EndGlobalSection
+EndGlobal
