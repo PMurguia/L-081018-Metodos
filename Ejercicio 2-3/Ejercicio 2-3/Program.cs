@@ -8,6 +8,7 @@ namespace Ejercicio_2_3
 {
     class Program
     {
+        static Random random = new Random();
         static void Main(string[] args)
         {
             //Crea una aplicación que nos genere una cantidad de números enteros aleatorios que nosotros le pasaremos por teclado.
@@ -23,39 +24,33 @@ namespace Ejercicio_2_3
             int numMax = Int32.Parse(Console.ReadLine());
             Console.WriteLine();
 
-            for(int i = 0;i<cantidad; i++)
+            for(int i = 0; i<cantidad; i++)
             {
-                Console.WriteLine(RandNumber(cantidad, numMin, numMax));
+                Console.WriteLine(RandNumber(numMin, numMax));
             }
             Console.ReadLine();
 
         }
-        public static double RandNumber (double cantidad, int numMin, int numMax)
+        public static double RandNumber (int numMin, int numMax)
         {
             int aux;
             double numRand;
-            Random random = new Random();
           
-                if(numMin > numMax)
-                {
-                    aux = numMin;
-                    numMax = numMin;
-                    numMax = aux;
-                    numRand = random.Next(numMin, numMax);
-                return numRand;
-                }
-                else
-                {
-                    numRand = random.Next(numMin, numMax);
-                    return numRand;
-                }
+            if(numMin > numMax)
+            {
+                aux = numMin;
+                numMax = numMin;
+                numMax = aux;
+            }
+            numRand = random.Next(numMin, numMax);
+            return numRand;
 
-           
-            
+
+
         }
-               
-            
-            
-        
+
+
+
+
     }
 }
