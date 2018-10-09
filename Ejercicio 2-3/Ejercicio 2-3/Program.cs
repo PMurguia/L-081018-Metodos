@@ -14,46 +14,48 @@ namespace Ejercicio_2_3
             //Crea un método donde pasamos como parámetros entre que números queremos que los genere,
             //podemos pedirlas por teclado antes de generar los números. Este método devolverá un número entero aleatorio.
             //Muestra estos números por pantalla.
-
+            
             Console.WriteLine("Generemos números aleatorios. Dame un número. ");
             double cantidad = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Dame un número para usarlo como base (el mínimo).");
             int numMin = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Ahora el tope (máximo).");
             int numMax = Int32.Parse(Console.ReadLine());
+            Console.WriteLine();
 
-            Console.WriteLine(cantidad = RandNumber(cantidad, numMin, numMax));
+            for(int i = 0;i<cantidad; i++)
+            {
+                Console.WriteLine(RandNumber(cantidad, numMin, numMax));
+            }
             Console.ReadLine();
-      
 
         }
-        public static double RandNumber(double randomNum, int numMin, int numMax)
+        public static double RandNumber (double cantidad, int numMin, int numMax)
         {
-            int aux = 0;
+            int aux;
+            double numRand;
             Random random = new Random();
-            if (numMax < numMin)
-            {
-                aux = numMax;
-                numMax = numMin;
-                numMin = aux;
-                random.Next(numMin, numMax);
-
-                for (int i = 0; i < randomNum; i++)
+          
+                if(numMin > numMax)
                 {
-                    random.Next(numMin, numMax);
+                    aux = numMin;
+                    numMax = numMin;
+                    numMax = aux;
+                    numRand = random.Next(numMin, numMax);
+                return numRand;
                 }
-                return randomNum;
-            }
-            else
-            {
-                for (int i = 0; i < randomNum; i++)
+                else
                 {
-                    random.Next(numMin, numMax);
-
+                    numRand = random.Next(numMin, numMax);
+                    return numRand;
                 }
-                return randomNum;
-            }
-    
+
+           
+            
         }
+               
+            
+            
+        
     }
 }
