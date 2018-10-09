@@ -28,138 +28,150 @@ namespace Ejercicio_2_10
             //Ejemplo:  
             //Fecha actual: 31 / 12 / 2011
             //Día siguiente: 1 / 1 / 2012
-            int mes;
-            Console.WriteLine("Introduzca un número de mes. ");
-            mes = Int32.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine(PedirMes(mes));
+            {
+                int month, year, day, maxYear, minYear;
+
+                //Generamos un mes
+                month = AskMonth();
+
+                //Generamos un año
+                Console.WriteLine("Introduce un límite mínimo:");
+                minYear = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Introduce un límite máximo:");
+                maxYear = Convert.ToInt32(Console.ReadLine());
+                year = AskYear(minYear, maxYear);
+
+                //Generamos día
+                day = AskDay(month, year);
+
+                //Generamos el día siguiente
+                NextDay(day, month, year);
+
+
+            }
+        }
+
+        public static void NextDay(int day, int month, int year)
+        {
+            Console.WriteLine("Fecha actual: " + day + "/" + month + "/" + year);
+
+            if (DateTime.IsLeapYear(year) && month == 2 && day == 29)
+            {
+                month++;
+                day = 1;
+
+            }
+            else if (!DateTime.IsLeapYear(year) && month == 2 && day == 28)
+            {
+                month++;
+                day = 1;
+            }
+            else if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 30)
+            {
+                month++;
+                day = 1;
+            }
+            else if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10) && day == 31)
+            {
+                month++;
+                day = 1;
+            }
+            else if (month == 12 && day == 31)
+            {
+                year++;
+                month = 1;
+                day = 1;
+            }
+            else
+            {
+                day++;
+            }
+            Console.WriteLine("Fecha día siguiente: " + day + "/" + month + "/" + year);
             Console.ReadLine();
-
-
-            Console.WriteLine("Dame un año. ");
-            int num1 = Int32.Parse(Console.ReadLine());
-            Console.WriteLine("Dame otro. ");
-            int num2 = Int32.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine(PedirAnio(num1, num2));
-            Console.ReadLine();
-
-            Console.WriteLine("Elige un día. ");
-            int dia = Int32.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine(PedirDia(mes,dia));
-            Console.ReadLine();
-
-           
-
-
-
         }
-        public static int PedirMes(int mes)
-        {
-            while (mes <= 0 || mes > 12)
-            {
-                Console.WriteLine("No es un mes correcto. Por favor, introduzca un número de mes correcto. ");
-                mes = Int32.Parse(Console.ReadLine());
-            }
-            return mes;
-        }
-        public static int PedirAnio(int num1, int num2)
-        {
-            int num3 = 0;
-            int anioRan = 0;
 
-            if (num1 > num2)
+        public static int AskDay(int month, int year)
+        {
+            int day;
+            bool correcto = false;
+            do
             {
-                num3 = num1;
-                num1 = num2;
-                num2 = num3;
-                Random anioRandom = new Random();
-                anioRan = anioRandom.Next(num1, num2 + 1);
+                Console.WriteLine("Introduce un día");
+                day = Convert.ToInt32(Console.ReadLine());
+
+                if (DateTime.IsLeapYear(year) && month == 2)
+                {
+                    if (day > 0 && day < 30)
+                    {
+                        correcto = true;
+                    }
+                }
+                else if (!DateTime.IsLeapYear(year) && month == 2)
+                {
+
+                    if (day > 0 && day < 29)
+                    {
+                        correcto = true;
+                    }
+                }
+                else if (month == 4 || month == 6 || month == 9 || month == 11)
+                {
+                    if (day > 0 && day < 31)
+                    {
+                        correcto = true;
+                    }
+                }
+                else if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+                {
+                    if (day > 0 && day < 32)
+                    {
+                        correcto = true;
+                    }
+                }
+
+            } while (!correcto);
+
+            return day;
+        }
+
+
+        public static int AskMonth()
+        {
+            int month;
+            do
+            {
+                Console.WriteLine("Introduce un mes");
+                month = Convert.ToInt32(Console.ReadLine());
+
+            } while (month < 1 || month > 12);
+
+            return month;
+        }
+
+        public static int AskYear(int minYear, int maxYear)
+        {
+            int aux, year;
+            Random rnd = new Random();
+
+            if (minYear > maxYear)
+            {
+                //Creo la variable auxiliar para guardar el valor de minYear para que
+                //cuando lo cambie no se pierda
+                aux = minYear;
+                minYear = maxYear;
+                maxYear = aux;
+                year = rnd.Next(minYear, maxYear + 1);
+                return year;
             }
             else
             {
-                Random anioRandom = new Random();
-                anioRan = anioRandom.Next(num1, num2 + 1);
+                year = rnd.Next(minYear, maxYear + 1);
+                return year;
             }
-            return anioRan;
-        }
-
-        public static int PedirDia(int anioRan, int mes)
-        {
-            int diasMax;
-
-            if (DateTime.IsLeapYear(anioRan) && mes == 2)
-            {
-                diasMax = 29;
-            }
-            else if (!DateTime.IsLeapYear(anioRan) && mes == 2)
-            {
-                diasMax = 28;
-            }
-            else if (mes == 4 || mes == 6 || mes == 9 || mes == 11)
-            {
-                diasMax = 30;
-            }
-            else
-            {
-                diasMax = 31;
-            }
-
-            return diasMax;
-        }
-
-        public static int MostrarSiguienteDia1(int dia, int diasMax, int mes, int anio)
-        {
-            if (dia + 1 > diasMax)
-            {
-                dia = 1;
-                mes++;
-            }
-            else if (mes > 12)
-            {
-                anio++;
-            }
-            else
-            {
-                //Console.WriteLine("Error!!");
-            }
-            return dia;
-
-        }
-        public static int MostrarSiguienteMes(int dia, int diasMax, int mes, int anio)
-        {
-            if (dia + 1 > diasMax)
-            {
-                dia = 1;
-                mes++;
-            }
-            else if (mes > 12)
-            {
-                anio++;
-            }
-            else
-            {
-                //Console.WriteLine("Error!!");
-            }
-            return mes;
-        }
-        public static int MostrarSiguienteAnio(int dia, int diasMax, int mes, int anio)
-        {
-            if (dia + 1 > diasMax)
-            {
-                dia = 1;
-                mes++;
-            }
-            else if (mes > 12)
-            {
-                anio++;
-            }
-            else
-            {
-                //Console.WriteLine("Error!!");
-            }
-            return anio;
         }
     }
+        
+    
 }
+    
+
