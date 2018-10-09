@@ -16,41 +16,44 @@ namespace Ejercicio_2_3
             //Muestra estos números por pantalla.
 
             Console.WriteLine("Generemos números aleatorios. Dame un número. ");
-            int cantidad = Int32.Parse(Console.ReadLine());
+            double cantidad = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Dame un número para usarlo como base (el mínimo).");
             int numMin = Int32.Parse(Console.ReadLine());
             Console.WriteLine("Ahora el tope (máximo).");
             int numMax = Int32.Parse(Console.ReadLine());
 
-            cantidad = Rnd(cantidad, numMin, numMax);
+            Console.WriteLine(cantidad = RandNumber(cantidad, numMin, numMax));
+            Console.ReadLine();
       
 
         }
-    }public static int Rnd (int cantidad, int numMin, int numMax)
-    {
-        int aux = 0;
-        Random random = new Random();
-        if (numMax < numMin)
+        public static double RandNumber(double randomNum, int numMin, int numMax)
         {
-            aux = numMax;
-            numMax = numMin;
-            numMin = aux;
-            random.Next(numMin, numMax);
+            int aux = 0;
+            Random random = new Random();
+            if (numMax < numMin)
+            {
+                aux = numMax;
+                numMax = numMin;
+                numMin = aux;
+                random.Next(numMin, numMax);
 
-            for (int i = 0; i < cantidad; i++)
-            {
-                random.Next(numMin, numMax);
+                for (int i = 0; i < randomNum; i++)
+                {
+                    random.Next(numMin, numMax);
+                }
+                return randomNum;
             }
-            return cantidad;
-        }
-        else
-        {
-            for (int i = 0; i < cantidad; i++)
+            else
             {
-                random.Next(numMin, numMax);
-                
+                for (int i = 0; i < randomNum; i++)
+                {
+                    random.Next(numMin, numMax);
+
+                }
+                return randomNum;
             }
-            return cantidad;
+    
         }
     }
 }
